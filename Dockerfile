@@ -41,12 +41,12 @@ RUN set -x \
 # Configure Postfix / dkim
 RUN set -x \
   && postconf -e smtpd_banner="\$myhostname ESMTP" \
-  && postconf -Me submission/inet="submission inet n - - - - smtpd" \
+  && postconf -Me submission/inet="8587 inet n - - - - smtpd" \
   && postconf -Me smtp/inet="8025 inet n - - - - smtpd" \
   && cp -a /var/spool/postfix /var/spool/postfix.cache \
   && rm -f /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem \
   && rm -f /etc/opendkim.conf \
-  && mkdir -p /etc/opendkim/ /etc/postfix/conf.d/ /var/log/postfix/ /home/spool/postfix \
+  && mkdir -p /etc/opendkim/ /etc/postfix/conf.d/ /home/work/logs/ \
   && echo "init some files" \
   && touch /etc/postfix/conf.d/bad_recipients \
   && echo "postmapping.." \

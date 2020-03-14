@@ -4,7 +4,7 @@ FROM debian:stretch
 
 MAINTAINER Archean Zhang <zephyr422@gmail.com>
 
-EXPOSE 25 587
+EXPOSE 8025 8587
 
 # Preselections for installation
 RUN set -x \
@@ -42,6 +42,7 @@ RUN set -x \
 RUN set -x \
   && postconf -e smtpd_banner="\$myhostname ESMTP" \
   && postconf -Me submission/inet="submission inet n - - - - smtpd" \
+  && postconf -Me smtp/inet="8025 inet n - - - - smtpd" \
   && cp -a /var/spool/postfix /var/spool/postfix.cache \
   && rm -f /etc/ssl/private/ssl-cert-snakeoil.key /etc/ssl/certs/ssl-cert-snakeoil.pem \
   && rm -f /etc/opendkim.conf \

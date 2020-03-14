@@ -6,10 +6,10 @@ Drop-in Docker image for SMTP relaying. Use wherever a connected service
 requires SMTP sending capabilities. Supports TLS out of the box and DKIM
 (if enabled and configured).
 
-[![Docker Automated build](https://img.shields.io/docker/cloud/automated/archean/postfix-relay.svg)](https://hub.docker.com/r/archean/postfix-relay/)
-[![Docker Build Status](https://img.shields.io/docker/cloud/build/archean/postfix-relay.svg)](https://hub.docker.com/r/archean/postfix-relay/builds/)
-[![Docker image size](https://images.microbadger.com/badges/image/archean/postfix-relay.svg)](https://microbadger.com/images/archean/postfix-relay)
-[![Docker image version](https://images.microbadger.com/badges/version/archean/postfix-relay.svg)](https://microbadger.com/images/archean/postfix-relay)
+[![Docker Automated build](https://img.shields.io/docker/cloud/automated/archean/mailrelay-docker.svg)](https://hub.docker.com/r/archean/mailrelay-docker/)
+[![Docker Build Status](https://img.shields.io/docker/cloud/build/archean/mailrelay-docker.svg)](https://hub.docker.com/r/archean/mailrelay-docker/builds/)
+[![Docker image size](https://images.microbadger.com/badges/image/archean/mailrelay-docker.svg)](https://microbadger.com/images/archean/mailrelay-docker)
+[![Docker image version](https://images.microbadger.com/badges/version/archean/mailrelay-docker.svg)](https://microbadger.com/images/archean/mailrelay-docker)
 
 ## Environment Variables
 

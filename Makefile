@@ -1,6 +1,6 @@
-NAME := postfix
+NAME := mailrelay-docker
 TAG := latest
-IMAGE_NAME := panubo/$(NAME)
+IMAGE_NAME := archean/$(NAME)
 
 .PHONY: help bash run run-dkim run-all-dkim build push clean
 

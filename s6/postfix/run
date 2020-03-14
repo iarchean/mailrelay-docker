@@ -122,7 +122,7 @@ if [[ "${BAD_RECIPIENTS}" == "true" ]]; then
   postconf -e smtpd_recipient_restrictions="check_recipient_access hash:/etc/postfix/conf.d/bad_recipients, permit_mynetworks, reject_unauth_destination, permit"
 fi
 
-if [[ "${BOUNCE_NOTIFY}" == "true" ]]; then
+if [[ "${BOUNCE_NOTIFY}" == "false" ]]; then
   echo "postfix >> Disable bounce notification."
   postconf -Me bounce/unix="bounce unix - - n - 0 discard"
 fi

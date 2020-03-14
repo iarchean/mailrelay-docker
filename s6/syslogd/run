@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -e
+
+[ "$DEBUG" == 'true' ] && set -x
+
+# Defaults
+: "${LOGOUTPUT:=/dev/stdout}"
+
+echo "syslogd >> Setting syslogd output to ${LOGOUTPUT}"
+
+exec syslogd -n -O "${LOGOUTPUT}" -S

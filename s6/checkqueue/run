@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+[ "$DEBUG" == 'true' ] && set -x
+
+# Fix issue with dpkg-reconfigure and locales not installed "perl: warning: Setting locale failed."
+unset LANG
+
+sleep 10 # wait for postfix started.
+
+echo "Starting checkqueue process..."
+
+checkqueue(){
+  queuelenth=0
+  result=`/usr/sbin/postqueue -p | tail -n 1`
+  if [[ $result == *"Requests"* ]]; then
+    queuelenth=`echo $result | awk '{print $5}'`
+  fi
+  echo $queuelenth > /home/work/queuelenth
+}
+
+MASTER_PID="$(cat /var/spool/postfix/pid/master.pid)"
+while kill -0 "${MASTER_PID}" 2>/dev/null; do
+  checkqueue
+  sleep 5
+done

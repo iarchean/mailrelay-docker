@@ -7,6 +7,10 @@ set -e
 # Defaults
 : "${LOGOUTPUT:=/dev/stdout}"
 
-echo "syslogd >> Setting syslogd output to ${LOGOUTPUT}"
-
-exec syslogd -n -O "${LOGOUTPUT}" -S
+if [[ $LOGOUTPUT == *"/"* ]]; then
+  echo "syslogd >> Setting syslogd output to ${LOGOUTPUT}"
+  exec syslogd -n -O "${LOGOUTPUT}" -S
+else 
+  echo "syslogd >> Setting syslogd output to remote server ${LOGOUTPUT}"
+  exec syslogd -n -R "${LOGOUTPUT}" -S
+fi

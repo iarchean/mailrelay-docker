@@ -13,9 +13,9 @@ requires SMTP sending capabilities. Supports TLS out of the box and DKIM
 
 ## Environment Variables
 
-- `MAILNAME` - set this to a legitimate FQDN hostname for this service (required).
+- `MAILNAME` - set this to a legitimate FQDN hostname for this service. Default is $HOSTNAME.
 - `MYNETWORKS` - comma separated list of IP subnets that are allowed to relay. Default `127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16`
-- `LOGOUTPUT` - Syslog log file location. eg `/var/log/maillog`. Default `/dev/stdout`.
+- `LOGOUTPUT` - Syslog log file location or remote host. eg `/var/log/maillog` or `192.168.0.1:514`. Default `/dev/stdout`.
 - `TZ` - set timezone. This is used by Postfix to create `Received` headers. Default `UTC`.
 
 General Postfix:
@@ -23,8 +23,10 @@ General Postfix:
 - `SIZELIMIT` -  Postfix `message_size_limit`. Default `15728640`.
 - `POSTFIX_ADD_MISSING_HEADERS` - add missing headers. Default `no`
 - `INET_PROTOCOLS` - IP protocols, eg `ipv4` or `ipv6`. Default `all`
+- `BOUNCE_NOTIFY` - Set to `false` to disable bounced email notification.
 - `BOUNCE_ADDRESS` - Email address to receive delivery failure notifications. Default is to log the delivery failure.
 - `HEADER_CHECKS` - If "true" activates a set of pre-configured header_checks.
+- `BAD_RECIPIENTS` - Set to "true" to use a bad_recipients list and discard emails send to them.
 
 Relay host parameters:
 

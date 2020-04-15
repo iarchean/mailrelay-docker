@@ -63,7 +63,7 @@ DKIM parameters:
 
 ## Usage Example
 
-`docker run -e MAILNAME=mail.example.com panubo/postfix`
+`docker run -e MAILNAME=mail.example.com archean/mailrelay-docker`
 
 ## Volumes
 

@@ -23,7 +23,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 #
 
-*/1 *   * * *   root    cp /etc/postfix/conf.d/header_checks /etc/postfix/header_checks
+*/1 *   * * *   root    cp /etc/postfix/conf.d/header_checks /etc/postfix/header_checks && postfix reload
 */1 *   * * *   root    cp /etc/postfix/conf.d/bad_recipients /etc/postfix/bad_recipients && postmap /etc/postfix/bad_recipients
 
 EOF

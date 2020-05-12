@@ -6,3 +6,4 @@
 /^X-PHP-Originating-Script:/  IGNORE
 /^User-Agent:/                IGNORE
 /^Mime-Version:/              REPLACE Mime-Version: 1.0
+/^From:/ PREPEND X-BPIT-MAILRELAY: Production

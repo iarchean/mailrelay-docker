@@ -48,14 +48,14 @@ RUN set -x \
   && rm -f /etc/opendkim.conf \
   && mkdir -p /etc/opendkim/ /etc/postfix/conf.d/ /home/work/logs/ \
   && echo "init some files" \
-  && touch /etc/postfix/conf.d/bad_recipients \
+  && touch /etc/postfix/bad_recipients \
   && echo "postmapping.." \
-  && postmap /etc/postfix/conf.d/bad_recipients \
+  && postmap /etc/postfix/bad_recipients \
   && echo "devnull: /dev/null" >> /etc/aliases \
   && newaliases \
   ;
 
-COPY header_checks /etc/postfix/conf.d/header_checks
+COPY header_checks /etc/postfix/header_checks
 COPY opendkim.conf.sh /etc/
 
 COPY s6 /etc/s6/

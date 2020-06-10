@@ -114,7 +114,7 @@ postconf -e inet_protocols="${INET_PROTOCOLS}"
 
 if [[ "${HEADER_CHECKS}" == "true" ]]; then
   echo "postfix >> Setting header_checks"
-  postconf -e smtp_header_checks="regexp:/etc/postfix/header_checks"
+  postconf -e header_checks="regexp:/etc/postfix/header_checks"
 fi
 
 if [[ "${BAD_RECIPIENTS}" == "true" ]]; then

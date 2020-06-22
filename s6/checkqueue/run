@@ -9,15 +9,23 @@ unset LANG
 
 sleep 10 # wait for postfix started.
 
+# set var
+
+MRENV=${ENV:-$WEIYUN_ENV}
+label=mailrelay_${MRENV}_queue
+instance_name=$(hostname)
+
 echo "Starting checkqueue process..."
 
 checkqueue(){
-  queuelenth=0
+  queuelength=0
   result=`/usr/sbin/postqueue -p | tail -n 1`
   if [[ $result == *"Requests"* ]]; then
-    queuelenth=`echo $result | awk '{print $5}'`
+    queuelength=`echo $result | awk '{print $5}'`
   fi
-  echo $queuelenth > /home/work/queuelenth
+  echo $queuelength > /home/work/queuelength
+  echo "$label $queuelength" | curl --data-binary @- https://noc-monitor.dev.weiyun.baidu.com:8957/pg/metrics/job/pushgateway/instance/$instance_name
+  # echo "$label $queuelength $instance_name"
 }
 
 MASTER_PID="$(cat /var/spool/postfix/pid/master.pid)"
